@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f3ee">
+  <title>Guarapuava — inverno que marca</title>
+  <style>
+    :root { color-scheme: light; --ink:#171815; --paper:#f4f3ee; --orange:#ff5b25; }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    main { min-height:100svh; padding:30px clamp(22px, 5vw, 76px) 24px; display:flex; flex-direction:column; }
+    header { display:flex; align-items:center; justify-content:space-between; font-size:12px; letter-spacing:.12em; text-transform:uppercase; font-weight:650; }
+    .mark { display:flex; align-items:center; gap:10px; }
+    .dot { width:9px; height:9px; border-radius:50%; background:var(--orange); }
+    .index { color:#777970; }
+    .hero { flex:1; display:grid; grid-template-columns:minmax(0,1fr) minmax(220px,.72fr); align-items:center; gap:5vw; max-width:1300px; width:100%; margin:4vh auto 3vh; }
+    .copy { position:relative; z-index:1; }
+    .eyebrow { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.16em; color:var(--orange); margin:0 0 24px; }
+    h1 { font-size:clamp(58px, 10.4vw, 146px); letter-spacing:-.085em; line-height:.79; margin:0; font-weight:760; }
+    h1 span { display:block; }
+    h1 .second { padding-left:.42em; }
+    .description { max-width:360px; margin:34px 0 0 clamp(0px, 8vw, 112px); font-size:clamp(15px, 1.45vw, 19px); line-height:1.55; color:#55574f; }
+    .description strong { color:var(--ink); font-weight:650; }
+    .visual { height:min(63vh, 570px); min-height:350px; position:relative; overflow:hidden; border-radius:48% 48% 8px 8px; background:#c8d5cf; }
+    .visual img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; }
+    .visual::after { content:""; position:absolute; inset:35% 0 0; background:linear-gradient(transparent,#17232170); }
+    .sun { display:none; }
+    .ridge { position:absolute; inset:auto -8% 0; height:54%; background:#344d48; clip-path:polygon(0 53%,18% 24%,31% 43%,49% 7%,65% 39%,78% 19%,100% 53%,100% 100%,0 100%); }
+    .ridge.back { height:44%; background:#607a70; opacity:.85; transform:translateY(-29px) scaleX(-1); }
+    .water { position:absolute; left:-8%; right:-8%; bottom:0; height:32%; background:linear-gradient(180deg,#b5c7b7,#879e91); clip-path:polygon(0 28%,17% 12%,31% 30%,51% 4%,70% 21%,85% 8%,100% 26%,100% 100%,0 100%); }
+    .road { position:absolute; width:44%; height:53%; left:14%; bottom:-13%; background:#e2c69a; clip-path:polygon(48% 0,55% 0,100% 100%,0 100%); opacity:.9; }
+    .sunline { position:absolute; width:39%; height:1px; background:#fff8d080; top:57%; right:11%; box-shadow:0 12px #fff8d04d, 0 25px #fff8d04d, 0 41px #fff8d033; }
+    .caption { position:absolute; bottom:18px; right:18px; color:white; font-size:10px; letter-spacing:.15em; text-transform:uppercase; writing-mode:vertical-rl; }
+    footer { display:flex; align-items:center; justify-content:space-between; border-top:1px solid #d8d8d0; padding-top:15px; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#777970; }
+    .scroll { color:var(--ink); display:flex; align-items:center; gap:10px; }
+    .arrow { color:var(--orange); font-size:18px; }
+    @media (max-width:700px) {
+      main { padding-top:22px; }
+      .hero { display:flex; flex-direction:column; align-items:stretch; gap:30px; margin:9vh auto 5vh; }
+      h1 { font-size:clamp(66px, 17vw, 112px); }
+      .description { margin:25px 0 0 8vw; max-width:300px; }
+      .visual { height:38vh; min-height:260px; width:84%; align-self:flex-end; border-radius:48% 48% 6px 6px; }
+      footer { font-size:9px; }
+    }
+    @media (prefers-reduced-motion:no-preference) { .visual { animation: arrive .9s cubic-bezier(.2,.7,.2,1) both; } @keyframes arrive { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:none; } } }
+  </style>
+</head>
+<body>
+  <main>
+    <header><div class="mark"><span class="dot"></span> Caderno de lugares</div><div class="index">Parte I &nbsp; / &nbsp; 01</div></header>
+    <section class="hero" aria-labelledby="title">
+      <div class="copy">
+        <p class="eyebrow">Paraná · Sul do Brasil</p>
+        <h1 id="title"><span>Guara-</span><span class="second">puava</span></h1>
+        <p class="description"><strong>Em Guarapuava, o inverno tem presença.</strong> O frio intenso veste a cidade de geada e, em ocasiões raras, de neve — um espetáculo breve que transforma a paisagem e fica na memória.</p>
+      </div>
+      <div class="visual"><img src="images/cidade-neve.webp" alt="Paisagem de Guarapuava coberta de neve"><div class="caption">Inverno em Guarapuava</div></div>
+    </section>
+    <footer><span>Parte I · Descrição da cidade</span><span class="scroll">Frio que vira memória <span class="arrow">↘</span></span></footer>
+  </main>
+</body>
+</html>
