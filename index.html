@@ -4,60 +4,113 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f4f3ee">
-  <title>Guarapuava — inverno que marca</title>
+  <title>Guarapuava — paisagens de inverno</title>
   <style>
-    :root { color-scheme: light; --ink:#171815; --paper:#f4f3ee; --orange:#ff5b25; }
-    * { box-sizing: border-box; }
-    body { margin:0; background:var(--paper); color:var(--ink); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-    main { min-height:100svh; padding:30px clamp(22px, 5vw, 76px) 24px; display:flex; flex-direction:column; }
-    header { display:flex; align-items:center; justify-content:space-between; font-size:12px; letter-spacing:.12em; text-transform:uppercase; font-weight:650; }
+    :root { color-scheme:light; --ink:#171815; --paper:#f4f3ee; --orange:#ff5b25; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    header { position:absolute; z-index:5; top:0; left:0; width:100%; padding:28px clamp(22px,5vw,76px); display:flex; align-items:center; justify-content:space-between; color:white; font-size:11px; letter-spacing:.14em; text-transform:uppercase; font-weight:650; mix-blend-mode:difference; }
     .mark { display:flex; align-items:center; gap:10px; }
-    .dot { width:9px; height:9px; border-radius:50%; background:var(--orange); }
-    .index { color:#777970; }
-    .hero { flex:1; display:grid; grid-template-columns:minmax(0,1fr) minmax(220px,.72fr); align-items:center; gap:5vw; max-width:1300px; width:100%; margin:4vh auto 3vh; }
-    .copy { position:relative; z-index:1; }
-    .eyebrow { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.16em; color:var(--orange); margin:0 0 24px; }
-    h1 { font-size:clamp(58px, 10.4vw, 146px); letter-spacing:-.085em; line-height:.79; margin:0; font-weight:760; }
-    h1 span { display:block; }
-    h1 .second { padding-left:.42em; }
-    .description { max-width:360px; margin:34px 0 0 clamp(0px, 8vw, 112px); font-size:clamp(15px, 1.45vw, 19px); line-height:1.55; color:#55574f; }
-    .description strong { color:var(--ink); font-weight:650; }
-    .visual { height:min(63vh, 570px); min-height:350px; position:relative; overflow:hidden; border-radius:48% 48% 8px 8px; background:#c8d5cf; }
-    .visual img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; }
-    .visual::after { content:""; position:absolute; inset:35% 0 0; background:linear-gradient(transparent,#17232170); }
-    .sun { display:none; }
-    .ridge { position:absolute; inset:auto -8% 0; height:54%; background:#344d48; clip-path:polygon(0 53%,18% 24%,31% 43%,49% 7%,65% 39%,78% 19%,100% 53%,100% 100%,0 100%); }
-    .ridge.back { height:44%; background:#607a70; opacity:.85; transform:translateY(-29px) scaleX(-1); }
-    .water { position:absolute; left:-8%; right:-8%; bottom:0; height:32%; background:linear-gradient(180deg,#b5c7b7,#879e91); clip-path:polygon(0 28%,17% 12%,31% 30%,51% 4%,70% 21%,85% 8%,100% 26%,100% 100%,0 100%); }
-    .road { position:absolute; width:44%; height:53%; left:14%; bottom:-13%; background:#e2c69a; clip-path:polygon(48% 0,55% 0,100% 100%,0 100%); opacity:.9; }
-    .sunline { position:absolute; width:39%; height:1px; background:#fff8d080; top:57%; right:11%; box-shadow:0 12px #fff8d04d, 0 25px #fff8d04d, 0 41px #fff8d033; }
-    .caption { position:absolute; bottom:18px; right:18px; color:white; font-size:10px; letter-spacing:.15em; text-transform:uppercase; writing-mode:vertical-rl; }
-    footer { display:flex; align-items:center; justify-content:space-between; border-top:1px solid #d8d8d0; padding-top:15px; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#777970; }
-    .scroll { color:var(--ink); display:flex; align-items:center; gap:10px; }
-    .arrow { color:var(--orange); font-size:18px; }
-    @media (max-width:700px) {
-      main { padding-top:22px; }
-      .hero { display:flex; flex-direction:column; align-items:stretch; gap:30px; margin:9vh auto 5vh; }
-      h1 { font-size:clamp(66px, 17vw, 112px); }
-      .description { margin:25px 0 0 8vw; max-width:300px; }
-      .visual { height:38vh; min-height:260px; width:84%; align-self:flex-end; border-radius:48% 48% 6px 6px; }
-      footer { font-size:9px; }
+    .dot { width:8px; height:8px; border-radius:50%; background:var(--orange); }
+    .top-index { opacity:.72; }
+    .intro { min-height:100svh; padding:120px clamp(22px,9vw,140px) 72px; display:flex; flex-direction:column; justify-content:center; position:relative; overflow:hidden; }
+    .intro::after { content:"PR"; position:absolute; right:-.04em; bottom:-.42em; color:#e9e8e1; font-size:clamp(280px,54vw,760px); letter-spacing:-.12em; line-height:1; font-weight:800; z-index:0; pointer-events:none; }
+    .intro-copy { position:relative; z-index:1; max-width:1050px; }
+    .eyebrow { color:var(--orange); font-size:11px; font-weight:750; letter-spacing:.18em; text-transform:uppercase; margin:0 0 24px; }
+    h1 { max-width:900px; margin:0; font-size:clamp(62px,12vw,158px); line-height:.82; letter-spacing:-.09em; font-weight:780; }
+    .intro-bottom { margin:44px 0 0 clamp(0px,12vw,170px); display:flex; gap:38px; align-items:flex-start; max-width:670px; }
+    .location { padding-top:5px; min-width:100px; color:#777970; font-size:10px; line-height:1.6; letter-spacing:.12em; text-transform:uppercase; }
+    .intro-text { margin:0; max-width:450px; color:#55574f; font-size:clamp(16px,1.6vw,20px); line-height:1.55; }
+    .intro-text strong { color:var(--ink); font-weight:650; }
+    .discover { position:absolute; right:clamp(22px,5vw,76px); bottom:34px; display:flex; gap:12px; align-items:center; color:#777970; text-transform:uppercase; letter-spacing:.13em; font-size:10px; }
+    .discover b { color:var(--orange); font-size:18px; font-weight:400; }
+    .scene { position:relative; min-height:88svh; display:flex; align-items:flex-end; overflow:hidden; isolation:isolate; background:#394640; color:white; }
+    .scene::before { content:""; position:absolute; z-index:-2; inset:-12%; background-image:var(--scene-image); background-size:cover; background-position:center; transform:translate3d(0,var(--parallax,0px),0) scale(1.08); will-change:transform; }
+    .scene::after { content:""; position:absolute; z-index:-1; inset:0; background:linear-gradient(90deg,#101713b8 0%,#10171355 48%,transparent 100%),linear-gradient(0deg,#10171370,transparent 45%); }
+    .scene-content { width:min(1200px,100%); margin:0 auto; padding:90px clamp(22px,8vw,120px) 78px; }
+    .scene-kicker { color:#f7a282; margin:0 0 18px; font-size:10px; letter-spacing:.17em; text-transform:uppercase; font-weight:700; }
+    .scene h2 { margin:0; max-width:760px; font-size:clamp(42px,8vw,100px); line-height:.88; letter-spacing:-.075em; }
+    .scene p { margin:24px 0 0; max-width:430px; color:#f3f3ed; font-size:clamp(15px,1.45vw,18px); line-height:1.55; }
+    .scene-number { position:absolute; right:clamp(22px,5vw,76px); top:42px; color:#ffffffad; font-size:10px; letter-spacing:.14em; }
+    .snow { --scene-image:url("images/cidade-neve.webp"); }
+    .lake { --scene-image:url("images/lago.webp"); }
+    .lake::after { background:linear-gradient(90deg,#101713a8 0%,#10171336 54%,transparent 100%),linear-gradient(0deg,#10171366,transparent 48%); }
+    footer { background:var(--paper); padding:22px clamp(22px,5vw,76px); display:flex; justify-content:space-between; color:#777970; border-top:1px solid #d8d8d0; font-size:10px; letter-spacing:.12em; text-transform:uppercase; }
+    @media (max-width:650px) {
+      header { padding-top:20px; font-size:9px; }
+      .intro { min-height:92svh; padding-top:120px; padding-bottom:100px; }
+      .intro::after { right:-.08em; bottom:-.22em; font-size:78vw; }
+      h1 { font-size:clamp(60px,15vw,98px); }
+      .intro-bottom { margin:34px 0 0 7vw; display:block; }
+      .location { margin-bottom:15px; }
+      .intro-text { font-size:16px; }
+      .discover { bottom:26px; }
+      .scene { min-height:78svh; }
+      .scene::before { inset:-4%; transform:translate3d(0,0,0) scale(1.04); }
+      .scene::after { background:linear-gradient(0deg,#101713b8 0%,#10171328 72%,#10171310 100%); }
+      .scene-content { padding:70px 24px 56px; }
+      .scene h2 { font-size:clamp(48px,13vw,78px); }
+      .scene-number { top:28px; right:24px; }
+      footer { font-size:8px; }
     }
-    @media (prefers-reduced-motion:no-preference) { .visual { animation: arrive .9s cubic-bezier(.2,.7,.2,1) both; } @keyframes arrive { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:none; } } }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
   </style>
 </head>
 <body>
+  <header><div class="mark"><span class="dot"></span> Caderno de lugares</div><div class="top-index">Parte I &nbsp; / &nbsp; Guarapuava</div></header>
   <main>
-    <header><div class="mark"><span class="dot"></span> Caderno de lugares</div><div class="index">Parte I &nbsp; / &nbsp; 01</div></header>
-    <section class="hero" aria-labelledby="title">
-      <div class="copy">
+    <section class="intro" aria-labelledby="title">
+      <div class="intro-copy">
         <p class="eyebrow">Paraná · Sul do Brasil</p>
-        <h1 id="title"><span>Guara-</span><span class="second">puava</span></h1>
-        <p class="description"><strong>Em Guarapuava, o inverno tem presença.</strong> O frio intenso veste a cidade de geada e, em ocasiões raras, de neve — um espetáculo breve que transforma a paisagem e fica na memória.</p>
+        <h1 id="title">Guarapuava.</h1>
+        <div class="intro-bottom">
+          <div class="location">25°23′ S<br>51°27′ O</div>
+          <p class="intro-text"><strong>No alto do Paraná, entre araucárias e campos,</strong> Guarapuava é uma cidade de clima frio, paisagens amplas e um ritmo tranquilo que acompanha as estações.</p>
+        </div>
       </div>
-      <div class="visual"><img src="images/cidade-neve.webp" alt="Paisagem de Guarapuava coberta de neve"><div class="caption">Inverno em Guarapuava</div></div>
+      <a class="discover" href="#neve">Explore a paisagem <b>↓</b></a>
     </section>
-    <footer><span>Parte I · Descrição da cidade</span><span class="scroll">Frio que vira memória <span class="arrow">↘</span></span></footer>
+
+    <section class="scene snow" id="neve" aria-labelledby="snow-title">
+      <span class="scene-number">01 — INVERNO</span>
+      <div class="scene-content">
+        <p class="scene-kicker">O frio também conta histórias</p>
+        <h2 id="snow-title">Quando a neve chega, tudo muda.</h2>
+        <p>O inverno guarapuavano é conhecido pelo frio e pelas geadas. A neve é rara, mas quando aparece cobre a cidade por instantes e deixa uma cena difícil de esquecer.</p>
+      </div>
+    </section>
+
+    <section class="scene lake" aria-labelledby="lake-title">
+      <span class="scene-number">02 — PAISAGEM</span>
+      <div class="scene-content">
+        <p class="scene-kicker">Um respiro entre as estações</p>
+        <h2 id="lake-title">Calma que se encontra à beira d’água.</h2>
+        <p>Entre áreas verdes e lagos tranquilos, a natureza faz parte do cotidiano. Um convite para desacelerar e olhar a cidade por outro ângulo.</p>
+      </div>
+    </section>
   </main>
+  <footer><span>Parte I · Descrição da cidade</span><span>Guarapuava, Paraná</span></footer>
+  <script>
+    (() => {
+      const scenes = document.querySelectorAll('.scene');
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduced || !('IntersectionObserver' in window)) return;
+      let ticking = false;
+      const update = () => {
+        const center = window.innerHeight / 2;
+        scenes.forEach((scene) => {
+          const rect = scene.getBoundingClientRect();
+          const offset = (rect.top + rect.height / 2 - center) * -0.10;
+          scene.style.setProperty('--parallax', `${offset}px`);
+        });
+        ticking = false;
+      };
+      window.addEventListener('scroll', () => {
+        if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+      }, { passive:true });
+      update();
+    })();
+  </script>
 </body>
 </html>
