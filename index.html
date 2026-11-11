@@ -36,7 +36,13 @@
     .snow { --scene-image:url("images/cidade-neve.webp"); }
     .lake { --scene-image:url("images/lago.webp"); }
     .lake::after { background:linear-gradient(90deg,#101713a8 0%,#10171336 54%,transparent 100%),linear-gradient(0deg,#10171366,transparent 48%); }
-    footer { background:var(--paper); padding:22px clamp(22px,5vw,76px); display:flex; justify-content:space-between; color:#777970; border-top:1px solid #d8d8d0; font-size:10px; letter-spacing:.12em; text-transform:uppercase; }
+    footer { background:var(--paper); padding:22px clamp(22px,5vw,76px); display:flex; align-items:center; justify-content:space-between; gap:24px; color:#777970; border-top:1px solid #d8d8d0; font-size:10px; letter-spacing:.12em; text-transform:uppercase; }
+    .credits > div { display:grid; gap:7px; }
+    .credit-label { color:#8b8d84; font-size:9px; }
+    .credits strong { color:var(--ink); font-size:11px; font-weight:650; letter-spacing:.04em; text-transform:none; }
+    .credits a { display:flex; align-items:center; gap:10px; color:var(--ink); text-decoration:none; font-weight:700; transition:color .2s ease; }
+    .credits a:hover { color:var(--orange); }
+    .credits a span { color:var(--orange); font-size:17px; }
     @media (max-width:650px) {
       header { padding-top:20px; font-size:9px; }
       .intro { min-height:92svh; padding-top:120px; padding-bottom:100px; }
@@ -52,7 +58,10 @@
       .scene-content { padding:70px 24px 56px; }
       .scene h2 { font-size:clamp(48px,13vw,78px); }
       .scene-number { top:28px; right:24px; }
-      footer { font-size:8px; }
+      footer { font-size:8px; padding-top:18px; padding-bottom:18px; }
+      .credits { align-items:flex-start; }
+      .credits strong { max-width:210px; font-size:10px; }
+      .credits a { max-width:130px; line-height:1.5; }
     }
     @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
   </style>
@@ -90,7 +99,10 @@
       </div>
     </section>
   </main>
-  <footer><span>Parte I · Descrição da cidade</span><span>Guarapuava, Paraná</span></footer>
+  <footer class="credits">
+    <div><span class="credit-label">Parte III · Página criada por</span><strong>Fernando Henrique Vieira Campos</strong></div>
+    <a href="https://guarapuava.pr.gov.br/" target="_blank" rel="noopener noreferrer">Conheça Guarapuava <span aria-hidden="true">↗</span></a>
+  </footer>
   <script>
     (() => {
       const scenes = document.querySelectorAll('.scene');
